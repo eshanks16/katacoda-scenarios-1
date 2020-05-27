@@ -1,1 +1,2 @@
-This scenario we will introduce you to the basic `kubectl` commands. You'll learn the basics on how to navigate through your cluster.
+This scenario will test your skills at troubleshooting Kubernetes `Pods`. You'll
+learn some common issues that affect pods in a Kubernetes cluster.
