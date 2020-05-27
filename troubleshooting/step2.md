@@ -1,8 +1,12 @@
 Now, we're ready to do some troubleshooting on one of our pods in the cluster. 
 
 Someone in our organization has unsuccessfully deployed a new container to the cluster but
-needs your help in fixing it. First lets find the container with the issue that
-is running in the default namespace
+needs your help in fixing it. First lets re-deploy the container from the
+Kubernetes manifest they provided us named `kuard-1.yaml. Deploy the container.
+
+`kubectl apply -f manifests/kuard-1.yaml`{{execute}}
+
+Now check the status of the container.
 
 `kubectl get pods`{{execute}} This will list the pods in the default namespace.
 
