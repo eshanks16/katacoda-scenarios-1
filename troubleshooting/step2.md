@@ -18,11 +18,17 @@ pull image` and that the image was not found.
 Now that you've identified the issue it's time fo fix it. Delete the failed pod.
 `kubectl delete pod kuard`{{execute}}
 
-Modify the Kubernetes manifest used to deploy this pod. The file is named kuard-1.yaml.
-Replace the image `gcr.io/kuar-demo/kuard-amd64` with
+Modify the Kubernetes manifest used to deploy this pod. The file is named `kuard-1.yaml`.
+
+Replace the image entry `gcr.io/kuar-demo/kuard-amd64` with
 `gcr.io/kuar-demo/kuard-amd64:blue` and save the file.
 
 Deploy the new pod with the corrected image by running:
 `kubectl apply -f kuard-1.yaml`{{execute}}
 
->Note: The corrected image answer file is found in the `kuard-1-answer.yaml`
+>Note: The corrected image answer file is found in the `kuard-1-answer.yaml` if
+>you need more information.
+
+Run `kubectl get pods`{{execute}} again and see if the pod starts up. It might
+take a few seconds for the container image to load, so you can run this command
+multiple times.
