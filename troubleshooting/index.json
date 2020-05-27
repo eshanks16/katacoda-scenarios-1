@@ -26,7 +26,7 @@
         {
           "file": "kuard-1.yaml",
           "target": "/root/manifests",
-          "chmod": "777"
+          "chmod": "640"
         },
         {
           "file": "kuard-1-answer.yaml",
@@ -35,10 +35,10 @@
       ]
     }
   },
-  "files": ["manifests/kuard-1.yaml"],
   "environment": {
     "uilayout": "editor-terminal",
-    "uieditorpath": "/root/manifests/"
+    "uieditorpath": "/root/manifests/",
+    "uisettings": "yaml"
   },
   "backend": {
     "imageid": "kubernetes-cluster-running"
