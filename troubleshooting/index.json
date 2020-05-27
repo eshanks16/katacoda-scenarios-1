@@ -35,7 +35,7 @@
       ]
     }
   },
-  "files": ["~/manifests/kuard-1.yaml"],
+  "files": ["/root/manifests/kuard-1.yaml"],
   "environment": {
     "uilayout": "editor-terminal",
     "uieditorpath": "/root/manifests/"

@@ -1,3 +1,3 @@
 #! /bin/bash
-kubectl apply -f kuard-1.yaml
+cd /root/manifests
 clear

@@ -4,7 +4,7 @@ Someone in our organization has unsuccessfully deployed a new container to the c
 needs your help in fixing it. First lets re-deploy the container from the
 Kubernetes manifest they provided us named `kuard-1.yaml. Deploy the container.
 
-`kubectl apply -f manifests/kuard-1.yaml`{{execute}}
+`kubectl apply -f kuard-1.yaml`{{execute}}
 
 Now check the status of the container.
 
