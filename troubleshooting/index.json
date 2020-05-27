@@ -25,7 +25,8 @@
       "host01": [
         {
           "file": "kuard-1.yaml",
-          "target": "~/manifests"
+          "target": "~/manifests",
+          "chmod": "777"
         },
         {
           "file": "kuard-1-answer.yaml",
@@ -34,6 +35,7 @@
       ]
     }
   },
+  "files": ["~/manifests/kuard-1.yaml"],
   "environment": {
     "uilayout": "editor-terminal",
     "uieditorpath": "~/manifests/"
