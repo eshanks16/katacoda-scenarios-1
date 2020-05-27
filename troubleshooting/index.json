@@ -24,7 +24,7 @@
     "assets": {
       "host01": [
         {
-          "file": "nginx-deployment.yaml",
+          "file": "kuard-1.yaml",
           "target": "~/"
         }
       ]
