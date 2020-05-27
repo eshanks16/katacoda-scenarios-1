@@ -1,10 +1,28 @@
-Let’s setup the terminal's command autocompletion to help you ease through the command line.  Command autocompletion allows you to type the base command (in this instance `kubectl`) and press the `tab` key to see all of the available sub-commands and options.
+Now, we're ready to do some troubleshooting on one of our pods in the cluster. 
 
-Setup `kubectl` command completion:
+Someone in our organization has unsuccessfully deployed a new container to the cluster but
+needs your help in fixing it. First lets find the container with the issue that
+is running in the default namespace
 
-`kubectl completion -h`{{execute}} This shows us the help options.
+`kubectl get pods`{{execute}} This will list the pods in the default namespace.
 
-This terminal setup is using the bash shell, so we will use the following command:
-`source <(kubectl completion bash)`{{execute}}
+We should see that the pod is in an error state and the STATUS likely shows
+`ImagePullBackOff`. This is a good clue as to the scope of the issue.
 
-Test the command autocompletion setup by typing `kubectl get` and press the `tab` key three times to see all the kubernetes components you can `get`.
+To gather some more information, run a describe command on that pod.
+`kubectl describe pod kuard`{{execute}}
+
+From the output of the command, you'll see a message stating that it `Failed to
+pull image` and that the image was not found.
+
+Now that you've identified the issue it's time fo fix it. Delete the failed pod.
+`kubectl delete pod kuard`{{execute}}
+
+Modify the Kubernetes manifest used to deploy this pod. The file is named kuard-1.yaml.
+Replace the image `gcr.io/kuar-demo/kuard-amd64` with
+`gcr.io/kuar-demo/kuard-amd64:blue` and save the file.
+
+Deploy the new pod with the corrected image by running:
+`kubectl apply -f kuard-1.yaml`{{execute}}
+
+>Note: The corrected image answer file is found in the `kuard-1-answer.yaml`

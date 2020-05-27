@@ -1,17 +1,7 @@
-We have a two node Kubernetes cluster deployed and ready. So let’s look at the the Kubernetes cluster information.
+We have a two node Kubernetes cluster deployed and ready. It consists of a
+single control plane node and a single worker node.
 
-Let’s examine the Kubernetes version running in the cluster.
+Examine the Kubernetes nodes running in the cluster before starting the troubleshooting.
 
-`kubectl version`{{execute}}
+`kubectl get nodes`{{execute}}
 
-You will not only see the `kubectl` client version along with the Kubernetes server version, but also the Build Date and the Go Version. Notice that the Kubernetes version might not always match the Go and Client versions.
-
-To see only the Kubernetes `kubectl` client version and not the Kubernetes version, try the following:
-
-`kubectl version --client=true`{{execute}}
-
-
-You might need to gather information about the endpoints of the master and services in the cluster. This information will come in handy if you have to troubleshoot your cluster.
-
-
-`kubectl cluster-info`{{execute}}

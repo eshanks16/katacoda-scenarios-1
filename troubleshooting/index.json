@@ -10,8 +10,8 @@
         "text": "step1.md"
       },
       {
-        "title": "Step 2 - kubectl Setup",
-        "code": "clear.sh",
+        "title": "Step 2 - Failed Pod Scenario 1",
+        "code": "scenario1.sh",
         "text": "step2.md"
       }
     ],
@@ -25,6 +25,10 @@
       "host01": [
         {
           "file": "kuard-1.yaml",
+          "target": "~/"
+        },
+        {
+          "file": "kuard-1-answer.yaml",
           "target": "~/"
         }
       ]
