@@ -10,19 +10,20 @@ Now check the status of the container.
 
 `kubectl get pods`{{execute}} This will list the pods in the default namespace.
 
-We should see that the pod is in an error state and the STATUS likely shows
-`ImagePullBackOff`. This is a good clue as to the scope of the issue.
+You should see that the pod is in an error state and the STATUS likely shows
+`ImagePullBackOff` or `ErrImagePull`. This is a good clue as to the scope of the issue.
 
 To gather some more information, run a describe command on that pod.
 `kubectl describe pod kuard`{{execute}}
 
-From the output of the command, you'll see a message stating that it `Failed to
-pull image` and that the image was not found.
+From the output of the command, you'll see a message stating that it 
+`Failed to pull image` and that the image was not found.
 
 Now that you've identified the issue it's time fo fix it. Delete the failed pod.
 `kubectl delete pod kuard`{{execute}}
 
-Modify the Kubernetes manifest used to deploy this pod. The file is named `kuard-1.yaml`.
+Modify the Kubernetes manifest used to deploy this pod. The file is named
+`kuard-1.yaml` and should be open in your editor.
 
 Replace the image entry `gcr.io/kuar-demo/kuard-amd64` with
 `gcr.io/kuar-demo/kuard-amd64:blue` and save the file.
