@@ -22,7 +22,7 @@ From the output of the command, you'll see a message stating that it
 Now that you've identified the issue it's time fo fix it. Delete the failed pod.
 `kubectl delete pod kuard`{{execute}}
 
-Modify the Kubernetes manifest used to deploy this pod. The file is named ![kuard-1.yaml](manifests/kuard-1.yaml) and can be found in your editor.
+Modify the Kubernetes manifest used to deploy this pod. The file is named ![kuard-1.yaml](kuard-1.yaml) and can be found in your editor.
 
 Replace the image entry `gcr.io/kuar-demo/kuard-amd64` with
 `gcr.io/kuar-demo/kuard-amd64:blue` and save the file.
