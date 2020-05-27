@@ -25,18 +25,18 @@
       "host01": [
         {
           "file": "kuard-1.yaml",
-          "target": "~/"
+          "target": "~/manifests"
         },
         {
           "file": "kuard-1-answer.yaml",
-          "target": "~/"
+          "target": "~/manifests"
         }
       ]
     }
   },
   "environment": {
-    "uilayout": "terminal-terminal",
-    "uieditorpath": "~/"
+    "uilayout": "editor-terminal",
+    "uieditorpath": "~/manifets/"
   },
   "backend": {
     "imageid": "kubernetes-cluster-running"
