@@ -25,12 +25,12 @@
       "host01": [
         {
           "file": "kuard-1.yaml",
-          "target": "~/manifests",
+          "target": "/root/manifests",
           "chmod": "777"
         },
         {
           "file": "kuard-1-answer.yaml",
-          "target": "~/manifests"
+          "target": "/root/manifests"
         }
       ]
     }
@@ -38,7 +38,7 @@
   "files": ["~/manifests/kuard-1.yaml"],
   "environment": {
     "uilayout": "editor-terminal",
-    "uieditorpath": "~/manifests/"
+    "uieditorpath": "/root/manifests/"
   },
   "backend": {
     "imageid": "kubernetes-cluster-running"
