@@ -40,7 +40,7 @@
           "target": "/root/manifests"
         },
         {
-          "file": "kuard-2.yaml",
+          "file": "kuard-2-answer.yaml",
           "target": "/root/manifests"
         }
       ]
