@@ -25,6 +25,12 @@
         "courseData": "scenario3.sh",
         "code": "reset.sh",
         "text": "step4.md"
+      },
+      {
+        "title": "Failed Pod Scenario 4",
+        "courseData": "scenario4.sh",
+        "code": "reset.sh",
+        "text": "step5.md"
       }
     ],
     "intro": {
@@ -48,6 +54,11 @@
         {
           "file": "kuard-2-answer.yaml",
           "target": "/root/manifests"
+        },
+        {
+          "file": "KAlogo.png",
+          "target":"/mnt/data/KAlogo.png",
+          "chmod": "640"
         }
       ]
     }
