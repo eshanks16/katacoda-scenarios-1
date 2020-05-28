@@ -41,6 +41,18 @@
       "text": "finish.md"
     },
     "assets": {
+      "host02": [
+        {
+          "file": "index.html",
+          "target":"/mnt/data",
+          "chmod": "640"
+        },
+        {
+          "file": "webserver.yaml",
+          "target":"/root/manifests",
+          "chmod": "640"
+        }
+      ],
       "host01": [
         {
           "file": "kuard.yaml",
