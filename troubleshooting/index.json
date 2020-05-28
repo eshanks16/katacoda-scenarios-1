@@ -59,6 +59,11 @@
           "file": "KAlogo.png",
           "target":"/mnt/data/KAlogo.png",
           "chmod": "640"
+        },
+        {
+          "file": "index.html",
+          "target":"/mnt/data/index.html",
+          "chmod": "640"
         }
       ]
     }
