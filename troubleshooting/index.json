@@ -37,7 +37,7 @@
     "assets": {
       "host01": [
         {
-          "file": "kuard-1.yaml",
+          "file": "kuard.yaml",
           "target": "/root/manifests",
           "chmod": "640"
         },
