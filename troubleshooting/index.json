@@ -75,7 +75,7 @@
   },
   "environment": {
     "showdashboard": true,
-    "dashboards": [{"name": "Webserver", "port": 30000}],
+    "dashboards": [{"name": "Webserver", "port": 30000},{"name": "Webserver 80", "port": 80}],
     "uilayout": "editor-terminal",
     "uieditorpath": "/root/manifests/",
     "uisettings": "yaml"
