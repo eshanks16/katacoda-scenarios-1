@@ -8,8 +8,7 @@
       {
         "title": "Step 1 - Cluster Info",
         "text": "step1.md",
-        "background": "launch.sh",
-        "foreground": "spinner.sh"
+        "foreground": "launch.sh"
       },
       {
         "title": "Step 2 - Failed Pod Scenario 1",
