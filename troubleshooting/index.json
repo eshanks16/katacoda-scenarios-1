@@ -24,8 +24,8 @@
     ],
     "intro": {
       "text": "intro.md",
-      "background": "launch.sh",
-      "foreground": "spinner.sh"
+      "courseData": "launch.sh",
+      "code": "spinner.sh"
       
     },
     "finish": {
