@@ -10,7 +10,7 @@ Check to see whats running in your cluster.
 
 Deploy the manifest.
 
-`kubectl apply -f kuard-1.yaml`{{execute}}
+`kubectl apply -f kuard-1-answer.yaml`{{execute}}
 
 Investigate the details of the deployment.
 
