@@ -26,12 +26,18 @@
       "text": "intro.md",
       "background": "launch.sh",
       "foreground": "spinner.sh"
+      
     },
     "finish": {
       "text": "finish.md"
     },
     "assets": {
       "host01": [
+        {
+          "file": "wait.sh", 
+          "target": "/usr/local/bin/", 
+          "chmod": "+x"
+        },
         {
           "file": "kuard-1.yaml",
           "target": "/root/manifests",
@@ -54,6 +60,6 @@
     "uisettings": "yaml"
   },
   "backend": {
-    "imageid": "kubernetes-cluster-running:1.18"
+    "imageid": "kubernetes-cluster-running"
   }
 }
