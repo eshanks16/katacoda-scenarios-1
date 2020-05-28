@@ -1,8 +1,9 @@
-Now, we're ready to do some troubleshooting on one of our pods in the cluster. 
+Someone in your organization has come to you for help. They are new to
+Kubernetes and are having trouble deploying a container. You offer your help and
+begin troubleshooting for your co-worker. 
 
-Someone in our organization has unsuccessfully deployed a new container to the cluster but
-needs your help in fixing it. First lets re-deploy the container from the
-Kubernetes manifest they provided us named `kuard-1.yaml. Deploy the container.
+First, re-deploy the container from the
+Kubernetes manifest they provided to us named, `kuard-1.yaml. Deploy the container.
 
 `kubectl apply -f kuard-1.yaml`{{execute}}
 

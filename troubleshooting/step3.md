@@ -1,34 +1,20 @@
-Now, we're ready to do some troubleshooting on one of our pods in the cluster. 
+Several weeks later on a team video chat, your coworker asks for help again. 
 
-Someone in our organization has unsuccessfully deployed a new container to the cluster but
-needs your help in fixing it. First lets find the container with the issue that
-is running in the default namespace
+This time, the same app isn't working. Your teammate explains that after some
+testing, it can't be re-deployed. They go on to say that the Kubernetes manifest
+hasn't changed. You begin to investigate.
 
-`kubectl get pods`{{execute}} This will list the pods in the default namespace.
+Check to see whats running in your cluster.
 
-We should see that the pod is in an error state and the STATUS likely shows
-`ImagePullBackOff`. This is a good clue as to the scope of the issue.
+`kubectl get pods`{{execute}}
 
-To gather some more information, run a describe command on that pod.
-`kubectl describe pod kuard`{{execute}}
+Deploy the manifest.
 
-From the output of the command, you'll see a message stating that it `Failed to
-pull image` and that the image was not found.
-
-Now that you've identified the issue it's time fo fix it. Delete the failed pod.
-`kubectl delete pod kuard`{{execute}}
-
-Modify the Kubernetes manifest used to deploy this pod. The file is named `kuard-1.yaml`.
-
-Replace the image entry `gcr.io/kuar-demo/kuard-amd64` with
-`gcr.io/kuar-demo/kuard-amd64:blue` and save the file.
-
-Deploy the new pod with the corrected image by running:
 `kubectl apply -f kuard-1.yaml`{{execute}}
 
->Note: The corrected image answer file is found in the `kuard-1-answer.yaml` if
->you need more information.
+Investigate the details of the deployment.
 
-Run `kubectl get pods`{{execute}} again and see if the pod starts up. It might
-take a few seconds for the container image to load, so you can run this command
-multiple times.
+`kubectl get pods`{{execute}}
+
+You see 
+
