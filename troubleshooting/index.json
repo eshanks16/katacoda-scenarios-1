@@ -11,7 +11,6 @@
       },
       {
         "title": "Step 2 - Failed Pod Scenario 1",
-        "courseData": "scenario1.sh",
         "code": "reset.sh",
         "text": "step2.md"
       },
@@ -31,11 +30,6 @@
     },
     "assets": {
       "host01": [
-        {
-          "file": "wait.sh", 
-          "target": "/usr/local/bin/", 
-          "chmod": "+x"
-        },
         {
           "file": "kuard-1.yaml",
           "target": "/root/manifests",
