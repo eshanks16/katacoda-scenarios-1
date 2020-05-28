@@ -7,8 +7,7 @@
     "steps": [
       {
         "title": "Step 1 - Cluster Info",
-        "text": "step1.md",
-        "foreground": "launch.sh"
+        "text": "step1.md"
       },
       {
         "title": "Step 2 - Failed Pod Scenario 1",
@@ -24,7 +23,8 @@
       }
     ],
     "intro": {
-      "text": "intro.md"
+      "text": "intro.md",
+      "courseData": "scenario1.sh"
     },
     "finish": {
       "text": "finish.md"
