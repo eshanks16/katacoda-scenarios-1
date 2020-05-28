@@ -44,6 +44,9 @@ tolerations:
   effect: NoSchedule
 ```
 
+>Note: The corrected image answer file is found in the `kuard-2-answer.yaml` if
+>you need more information.
+
 Apply the manifest again.
 
 `kubectl apply -f kuard-1.yaml`{{execute}}
