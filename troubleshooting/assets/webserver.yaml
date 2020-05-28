@@ -28,7 +28,8 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: task-pv-pod
+  name: webserver
+  app: webserver1
 spec:
   volumes:
     - name: task-pv-storage
@@ -43,3 +44,17 @@ spec:
       volumeMounts:
         - mountPath: "/usr/share/nginx/html"
           name: task-pv-storage
+---
+apiVersion: v1
+kind: apiVersion: v1
+kind: Service
+metadata:
+  name: webserver
+spec:
+  type: NodePort
+  selector:
+    app: webserver1
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30000
