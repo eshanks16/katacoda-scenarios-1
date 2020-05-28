@@ -17,7 +17,7 @@
       },
       {
         "title": "Step 3 - Failed Pod Scenario 2",
-        "courseData": "scenario1.sh",
+        "courseData": "scenario2.sh",
         "code": "reset.sh",
         "text": "step3.md"
       }
