@@ -26,3 +26,30 @@ on them and we're missing a matching toleration. Check the taints on the nodes.
 
 `kubectl get nodes -o json | jq '.items[].spec.taints'`{{execute}}
 
+We can see that both of our nodes have a taint and the Kubernetes manifest
+doesn't have a toleration that matches this. Time to fix the issue.
+
+First start by deleting the existing pod.
+
+`kubectl delete pod kuard`{{execute}}
+
+Now modify the manifest by adding a toleration for the worker node. Edit the
+kuard-1.yaml file and add the following in the .spec section.
+
+``` yaml
+tolerations:
+- key: disktype
+  operator: Equal
+  value: slow
+  effect: NoSchedule
+```
+
+Apply the manifest again.
+
+`kubectl apply -f kuard-1.yaml`{{execute}}
+
+Check the pod again and see if the Kubernetes scheduler was able to deploy the
+pod now that a toleration was added.
+
+`kubectl get pods`{{execute}}
+
