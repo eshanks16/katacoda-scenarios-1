@@ -23,7 +23,9 @@
       }
     ],
     "intro": {
-      "text": "intro.md"
+      "text": "intro.md",
+      "background": "launch.sh",
+      "foreground": "spinner.sh"
     },
     "finish": {
       "text": "finish.md"
@@ -52,6 +54,6 @@
     "uisettings": "yaml"
   },
   "backend": {
-    "imageid": "kubernetes-cluster-running"
+    "imageid": "kubernetes-cluster-running:1.18"
   }
 }
