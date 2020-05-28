@@ -38,6 +38,10 @@
         {
           "file": "kuard-1-answer.yaml",
           "target": "/root/manifests"
+        },
+        {
+          "file": "kuard-2.yaml",
+          "target": "/root/manifests"
         }
       ]
     }

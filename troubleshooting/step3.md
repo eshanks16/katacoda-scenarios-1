@@ -16,5 +16,13 @@ Investigate the details of the deployment.
 
 `kubectl get pods`{{execute}}
 
-You see 
+You see that the Pod is in the `Pending` state. Dig further by running a describe.
+
+`kubectl describe pod kuard`{{execute}}
+
+We see that pod `FailedScheduling` and a message noting `node(s) had taints that
+the pod didn't tolerate`.  This clue tells us that some of our nodes have taints
+on them and we're missing a matching toleration. Check the taints on the nodes.
+
+`kubectl get nodes -o json | jq '.items[].spec.taints'`{{execute}}
 
