@@ -6,19 +6,25 @@
   "details": {
     "steps": [
       {
-        "title": "Step 1 - Cluster Info",
+        "title": "Cluster Info",
         "text": "step1.md"
       },
       {
-        "title": "Step 2 - Failed Pod Scenario 1",
+        "title": "Failed Pod Scenario 1",
         "code": "reset.sh",
         "text": "step2.md"
       },
       {
-        "title": "Step 3 - Failed Pod Scenario 2",
+        "title": "Failed Pod Scenario 2",
         "courseData": "scenario2.sh",
         "code": "reset.sh",
         "text": "step3.md"
+      },
+      {
+        "title": "Failed Pod Scenario 3",
+        "courseData": "scenario3.sh",
+        "code": "reset.sh",
+        "text": "step4.md"
       }
     ],
     "intro": {
