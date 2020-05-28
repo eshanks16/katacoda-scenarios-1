@@ -12,11 +12,13 @@
       {
         "title": "Step 2 - Failed Pod Scenario 1",
         "courseData": "scenario1.sh",
+        "code": "reset.sh",
         "text": "step2.md"
       },
       {
         "title": "Step 3 - Failed Pod Scenario 2",
         "courseData": "scenario1.sh",
+        "code": "reset.sh",
         "text": "step3.md"
       }
     ],
