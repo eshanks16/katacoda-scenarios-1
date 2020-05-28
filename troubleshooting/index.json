@@ -57,12 +57,17 @@
         },
         {
           "file": "KAlogo.png",
-          "target":"/mnt/data/KAlogo.png",
+          "target":"/mnt/data",
           "chmod": "640"
         },
         {
           "file": "index.html",
-          "target":"/mnt/data/index.html",
+          "target":"/mnt/data",
+          "chmod": "640"
+        },
+        {
+          "file": "webserver.yaml",
+          "target":"/root/manifests",
           "chmod": "640"
         }
       ]
