@@ -1,3 +1,4 @@
 #! /bin/bash
-kubectl uncordon node01
+cat /mnt/data/index.html
 kubectl delete pod --all
+kubectl uncordon node01

@@ -45,6 +45,12 @@ spec:
       volumeMounts:
         - mountPath: "/usr/share/nginx/html"
           name: task-pv-storage
+  nodeSelector:
+    kubernetes.io/hostname: master
+  tolerations:
+  - key: node-role.kubernetes.io/master
+    operator: Exists
+    effect: NoSchedule
 ---
 apiVersion: v1
 kind: Service
@@ -55,6 +61,7 @@ spec:
   selector:
     app: webserver1
   ports:
-  - port: 80
+  - protocol: TCP
+    port: 80
     targetPort: 80
-    nodePort: 30000
+    nodePort: 32321
