@@ -22,9 +22,18 @@ You see that the Pod is in the `Pending` state. Dig further by running a describ
 
 We see that pod `FailedScheduling` and a message noting `node(s) had taints that
 the pod didn't tolerate`.  This clue tells us that some of our nodes have taints
-on them and we're missing a matching toleration. Check the taints on the nodes.
+on them and we're missing a matching toleration. Check the taints on the nodes
+by running a get on the nodes.
 
-`kubectl get nodes -o json | jq '.items[].spec.taints'`{{execute}}
+`kubectl get nodes`{{execute}}
+
+If you look through the data you'll find a taint listed.
+
+>NOTE: We can also use jq to
+>look for a specific item and that command is shown below. Either will return the
+>data you're looking for.
+
+>`kubectl get nodes -o json | jq '.items[].spec.taints'`{{execute}}
 
 We can see that both of our nodes have a taint and the Kubernetes manifest
 doesn't have a toleration that matches this. Time to fix the issue.
