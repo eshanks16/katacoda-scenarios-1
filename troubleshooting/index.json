@@ -88,12 +88,8 @@
   "environment": {
     "showdashboard": true,
       "dashboards": [{
-        "name": "Webserver 32321",
+        "name": "Webserver",
         "port": 32321
-      },
-      {
-        "name": "Webserver 80",
-        "port": 80
       }],
     "uilayout": "editor-terminal",
     "uieditorpath": "/root/manifests/",
