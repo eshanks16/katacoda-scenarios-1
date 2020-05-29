@@ -81,6 +81,11 @@
           "file": "webserver.yaml",
           "target":"/root/manifests",
           "chmod": "640"
+        },
+        {
+          "file": "webserver-1-answer.yaml",
+          "target":"/root/manifests",
+          "chmod": "640"
         }
       ]
     }

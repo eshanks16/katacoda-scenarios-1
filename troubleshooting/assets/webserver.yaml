@@ -35,7 +35,7 @@ spec:
   volumes:
     - name: task-pv-storage
       persistentVolumeClaim:
-        claimName: task-pv-claim
+        claimName: MY_BAD_CLAIM_NAME
   containers:
     - name: task-pv-container
       image: nginx:alpine
