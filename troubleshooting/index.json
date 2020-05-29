@@ -45,12 +45,12 @@
         {
           "file": "index.html",
           "target":"/mnt/data",
-          "chmod": "640"
+          "chmod": "777"
         },
         {
           "file": "KAlogo.png",
           "target":"/mnt/data",
-          "chmod": "640"
+          "chmod": "777"
         }
       ],
       "host01": [
@@ -70,12 +70,12 @@
         {
           "file": "KAlogo.png",
           "target":"/mnt/data",
-          "chmod": "640"
+          "chmod": "777"
         },
         {
           "file": "index.html",
           "target":"/mnt/data",
-          "chmod": "640"
+          "chmod": "777"
         },
         {
           "file": "webserver.yaml",
