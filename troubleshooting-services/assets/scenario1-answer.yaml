@@ -18,7 +18,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    application: kuard
+    app: kuard
   ports:
   - protocol: TCP
     port: 8080
