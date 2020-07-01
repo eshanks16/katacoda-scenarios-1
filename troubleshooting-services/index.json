@@ -11,7 +11,8 @@
       },
       {
         "title": "Failed Services Scenario 1",
-        "text": "scenario1.sh"
+        "text": "step2.md",
+        "code": "scenario1.sh"
       }
     ],
     "intro": {
