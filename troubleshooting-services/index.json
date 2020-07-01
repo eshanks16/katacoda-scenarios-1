@@ -18,6 +18,15 @@
       "text": "finish.md"
     }
   },
+  "assets": {
+    "host01": [
+      {
+        "file": "kuard-1.yaml",
+        "target": "/root/manifests",
+        "chmod": "640"
+      }
+    ]
+  },
   "environment": {
     "showdashboard": true,
       "dashboards": [{
