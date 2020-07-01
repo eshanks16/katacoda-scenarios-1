@@ -18,7 +18,7 @@ it outside the cluster.
 
 We can see that there are two services, within the default namespace, One of
 which is the Kubernetes ClusterIP which should be visible on all Kubernetes
-clusters. The second service looks to be whats used to connect the `kuard` pod.
+clusters. The second service looks to be what is used to connect the `kuard` pod.
 
 Lets see what happens when we try to access the application via a web browser.
 Click the Webserver tab to see the status of the application in a browser.
@@ -39,7 +39,7 @@ Fix this by changing the service's selector so that they match.
 
 When you've made the changes re-apply the manifest by running:
 
-`kubectl apply -f kuard-1.yaml`
+`kubectl apply -f kuard-1.yaml`{{execute}}
 
 After the manifest has been re-applied, check the Webserver tab again to see
 your working application.
