@@ -101,7 +101,7 @@
       "uisettings": "yaml"
     },
     "backend": {
-      "imageid": "kubernetes-cluster-running"
+      "imageid": "kubernetes"
     }
   }
   
