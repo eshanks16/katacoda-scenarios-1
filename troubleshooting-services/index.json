@@ -18,7 +18,7 @@
       },
       {
         "title": "Failed Services Scenario 2",
-        "test": "step2.md",
+        "text": "step2.md",
         "courseData": "scenario2.sh",
         "code": "reset.sh"
       }
