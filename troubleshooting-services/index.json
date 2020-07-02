@@ -42,6 +42,11 @@
           "chmod": "640"
         },
         {
+          "file": "resources.yaml",
+          "target":"/root",
+          "chmod": "640"
+        },
+        {
           "file": "webserver-1.yaml",
           "target":"/root",
           "chmod": "640"
