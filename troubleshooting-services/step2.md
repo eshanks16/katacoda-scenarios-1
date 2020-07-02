@@ -5,5 +5,52 @@ Your co-workers, not to be out done, have been adding some new skills as well
 and have started putting their resources into different namespaces. Again, your
 phone rings about an issue within the lab cluster.
 
-`kubectl get pods`{{execute}}
+Your puzzled colleagues have deployed their production web server within its own
+namespace called `prodapps`. The application is running and visible to users.
 
+`Click the Webserver tab to display the application.`
+
+The application should be working, but your colleagues inform you that they are
+unable to access this application from pods in other namespaces. They begin
+walking you through their testing methods.
+
+First they deploy a container that contains the curl application into the
+`prodapps` namespace.
+
+`kubectl run curl-test --generator=run-pod/v1 --image=radial/busyboxplus:curl -n
+prodapps`{{execute}}
+
+Once the pod has started, exec into the container to run some test commands.
+
+`kubectl exec -it curl-test`{{execute}}
+
+Once you've gotten a terminal session, run the curl command to test connectivity.
+
+`curl webserver`{{execute}}
+
+OK, that worked. Exit out of the container by running `CTRL+C` or `CMD+C` on Mac.
+
+Now, re-deploy that test container into the default namespace and exec into it
+again.
+
+`kubectl run curl-test --generator=run-pod/v1 --image=radial/busyboxplus:curl -i
+--tty`{{execute}}
+
+Your colleagues show you that if you run the curl command again, it doesn't work.
+
+`curl webserver`{{execute}}
+
+The curl cannot seem to find the application. You have identified the issue your
+co-workers have run into. Services referenced from a different namespace must
+pass additional suffixes that include the namespace and cluster name.
+
+You show them that running this command:
+
+`curl webserver.prodapps.svc.cluster.local`{{execute}}
+
+Afterwards you teach your co-workers that services accessed from other
+namespaces must include:
+
+[Service Name].[Namespace Name].[svc.cluster.local]
+
+Press `CTRL+C` or `CMD+C` to exit the pod.

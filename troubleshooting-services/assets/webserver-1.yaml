@@ -1,8 +1,14 @@
 ---
 apiVersion: v1
+kind: Namespace
+metadata: 
+  name: prodapps
+---
+apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: task-pv-volume
+  namespace: prodapps
   labels:
     type: local
 spec:
@@ -18,6 +24,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: task-pv-claim
+  name: prodapps
 spec:
   storageClassName: manual
   accessModes:
@@ -30,6 +37,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: webserver
+  name: prodapps
   labels:
     app : webserver1
 spec:
@@ -46,17 +54,12 @@ spec:
       volumeMounts:
         - mountPath: "/usr/share/nginx/html"
           name: task-pv-storage
-  nodeSelector:
-    kubernetes.io/hostname: master
-  tolerations:
-  - key: node-role.kubernetes.io/master
-    operator: Exists
-    effect: NoSchedule
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: webserver
+  name: prodapps
 spec:
   type: NodePort
   selector:
