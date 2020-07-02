@@ -35,6 +35,23 @@
           "file": "kuard-1.yaml",
           "target": "/root/manifests",
           "chmod": "640"
+        },
+        {
+          "file": "scenario1-answer.yaml",
+          "target":"/root/manifests",
+          "chmod": "640"
+        }
+      ],
+      "host02": [
+        {
+          "file": "index.html",
+          "target":"/mnt/data",
+          "chmod": "777"
+        },
+        {
+          "file": "KAlogo.png",
+          "target":"/mnt/data",
+          "chmod": "777"
         }
       ]
     }
