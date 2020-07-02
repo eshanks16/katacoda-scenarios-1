@@ -17,13 +17,13 @@ walking you through their testing methods.
 First they deploy a container that contains the curl application into the
 `prodapps` namespace.
 
-`kubectl run curl --generator=run-pod/v1 --image=radial/busyboxplus:curl -n prodapps`{{execute}}
+`kubectl run curl --generator=run-pod/v1 --image=radial/busyboxplus:curl -n prodapps -i --tty`{{execute}}
 
-Once the pod has started, exec into the container to run some test commands.
+Once the pod has started, you will have an shell from within this curl
+container to run tests.
 
-`kubectl exec -it curl -- /bin/sh`{{execute}}
-
-Once you've gotten a terminal session, run the curl command to test connectivity.
+Once you've gotten a terminal session, run the curl command to test connectivity
+to the webserver.
 
 `curl webserver`{{execute}}
 
@@ -57,5 +57,5 @@ Exit the container.
 
 `exit`{{execute}}
 
-Armed with this new knowledge, your colleagues go back to work to build more
+Armed with this new knowledge you've provided, your colleagues go back to work to build more
 apps segmented by namespaces.
