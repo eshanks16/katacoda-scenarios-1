@@ -27,12 +27,13 @@ to the webserver.
 
 `curl webserver`{{execute}}
 
-OK, that worked. Exit out of the container by typing exit.
+OK, that worked. Exit out of the container by typing exit in the container's shell.
 
-`exit`{{execute}}
+`exit`
 
-Now, re-deploy that test container into the default namespace and exec into it
-again.
+Now, re-deploy that test container into the `default` namespace and exec into it
+again. This will place the testing container into a different namespace from the
+web server which is in `prodapps`.
 
 `kubectl run curl --generator=run-pod/v1 --image=radial/busyboxplus:curl -i --tty`{{execute}}
 
@@ -40,11 +41,11 @@ Your colleagues show you that if you run the curl command again, it doesn't work
 
 `curl webserver`{{execute}}
 
-The curl cannot seem to find the application. You have identified the issue your
+The curl command cannot seem to find the application. You have identified the issue your
 co-workers have run into. Services referenced from a different namespace must
 pass additional suffixes that include the namespace and cluster name.
 
-You show them that running this command:
+You show them how it should be used by running this command:
 
 `curl webserver.prodapps.svc.cluster.local`{{execute}}
 
@@ -53,9 +54,9 @@ namespaces must include a DNS suffix for the service entry:
 
 [Service Name].[Namespace Name].[svc.cluster.local]
 
-Exit the container.
+Exit the container shell again by typing `exit` and hitting enter.
 
-`exit`{{execute}}
+`exit`
 
 Armed with this new knowledge you've provided, your colleagues go back to work to build more
 apps segmented by namespaces.
