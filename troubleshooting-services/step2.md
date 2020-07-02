@@ -17,24 +17,24 @@ walking you through their testing methods.
 First they deploy a container that contains the curl application into the
 `prodapps` namespace.
 
-`kubectl run curl-test --generator=run-pod/v1 --image=radial/busyboxplus:curl -n
-prodapps`{{execute}}
+`kubectl run curl --generator=run-pod/v1 --image=radial/busyboxplus:curl -n prodapps`{{execute}}
 
 Once the pod has started, exec into the container to run some test commands.
 
-`kubectl exec -it curl-test`{{execute}}
+`kubectl exec -it curl -- /bin/sh`{{execute}}
 
 Once you've gotten a terminal session, run the curl command to test connectivity.
 
 `curl webserver`{{execute}}
 
-OK, that worked. Exit out of the container by running `CTRL+C` or `CMD+C` on Mac.
+OK, that worked. Exit out of the container by typing exit.
+
+`exit`{{execute}}
 
 Now, re-deploy that test container into the default namespace and exec into it
 again.
 
-`kubectl run curl-test --generator=run-pod/v1 --image=radial/busyboxplus:curl -i
---tty`{{execute}}
+`kubectl run curl --generator=run-pod/v1 --image=radial/busyboxplus:curl -i --tty`{{execute}}
 
 Your colleagues show you that if you run the curl command again, it doesn't work.
 
@@ -49,8 +49,13 @@ You show them that running this command:
 `curl webserver.prodapps.svc.cluster.local`{{execute}}
 
 Afterwards you teach your co-workers that services accessed from other
-namespaces must include:
+namespaces must include a DNS suffix for the service entry:
 
 [Service Name].[Namespace Name].[svc.cluster.local]
 
-Press `CTRL+C` or `CMD+C` to exit the pod.
+Exit the container.
+
+`exit`{{execute}}
+
+Armed with this new knowledge, your colleagues go back to work to build more
+apps segmented by namespaces.
