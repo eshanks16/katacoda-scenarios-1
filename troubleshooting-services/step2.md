@@ -17,7 +17,7 @@ walking you through their testing methods.
 First they deploy a container that contains the curl application into the
 `prodapps` namespace.
 
-`kubectl run curl --generator=run-pod/v1 --image=radial/busyboxplus:curl -n prodapps -i --tty`{{execute}}
+`kubectl run curl --generator=run-pod/v1 --image=radial/busyboxplus:curl -n prodapps -i --tty --rm`{{execute}}
 
 Once the pod has started, you will have a shell from within this curl
 container to run tests.
@@ -35,7 +35,7 @@ Now, re-deploy that test container into the `default` namespace and exec into it
 again. This will place the testing container into a different namespace from the
 web server which is in `prodapps`.
 
-`kubectl run curl --generator=run-pod/v1 --image=radial/busyboxplus:curl -i --tty`{{execute}}
+`kubectl run curl --generator=run-pod/v1 --image=radial/busyboxplus:curl -i --tty --rm`{{execute}}
 
 Your colleagues show you that if you run the curl command again, it doesn't work.
 
