@@ -15,14 +15,14 @@ other clusters, you suspect the scope of this issue is cluster related, rather
 than the application.
 
 First, check the application status by checking the `Webserver` tab. 
-Then run `kubectl get pods`{{execute}} where you verify the webserver pod is
+Then run `kubectl get pods -n prodapps`{{execute}} where you verify the webserver pod is
 running without any issues.
 
-Next, check the service exposing the webserver by running `kubectl get
-svc`{{execute}}.
+Next, check the service exposing the webserver by running
+`kubectl get services -n prodapps`{{execute}}.
 
 You see that the service is configured. Check the Kubernetes Endpoints to make
-sure the pod is exposed properly. `kubectl get endpoints`{{execute}}.
+sure the pod is exposed properly. `kubectl get endpoints -n prodapps`{{execute}}.
 
 Sure enough, the pod has a proper service endpoint so traffic should be getting
 to the pod. Your suspicions about this being a cluster scoped issue are starting
@@ -32,8 +32,12 @@ kube-system namespace.
 `kubectl get pods -n kube-system`{{execute}}
 
 At first glance, things look to be in pretty good shape. Your pods are all in a
-running state, which is nice, but we're missing a `kube-proxy`. The kube proxy
-is supposed to be deployed on each node (usually a daemonset) and configures the
+running state, but we're missing a `kube-proxy`. 
+
+>Note: You may have a katacode pod that is in an error state. This is not
+>material to the lab.
+
+The kube proxy is supposed to be deployed on each node (usually a daemonset) and configures the
 hosts routing rules. For instance, ensuring traffic can get to your service
 endpoints that we already validated.
 
