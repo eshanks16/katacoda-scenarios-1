@@ -23,7 +23,15 @@ clusters. The second service looks to be what is used to connect the `kuard` pod
 Lets see what happens when we try to access the application via a web browser.
 Click the Webserver tab to see the status of the application in a browser.
 
-Well, your co-worker was telling the truth, the application isn't available.
+Well, your co-worker was telling the truth, the application isn't available. You
+ask to run one more test to confirm your suspicions.
+
+`kubectl get endpoints kuard`{{execute}}
+
+This command returns no endpoints for the kuard pod. This means that the service
+that was deployed isn't associated with this pod. Its likely that it was
+misconfigured.
+
 Lets take a look at the manifest used to deploy this application. Click the
 `kuard-1.yaml` file in the editor to see what was used for the deployment.
 
@@ -43,3 +51,6 @@ When you've made the changes re-apply the manifest by running:
 
 After the manifest has been re-applied, check the Webserver tab again to see
 your working application.
+
+You can also re-run the `kubectl get endpoints hostnames`{{execute}} command
+where you'll see an endpoint associated with your running pod now.
