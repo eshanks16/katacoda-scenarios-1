@@ -44,6 +44,7 @@ need to match for the service to be associated with the pods running in the
 cluster.
 
 Fix this by changing the service's selector so that they match.
+>NOTE: If you are stuck, look at the `scenario1-answer.yaml` file.
 
 When you've made the changes re-apply the manifest by running:
 
@@ -52,5 +53,5 @@ When you've made the changes re-apply the manifest by running:
 After the manifest has been re-applied, check the Webserver tab again to see
 your working application.
 
-You can also re-run the `kubectl get endpoints hostnames`{{execute}} command
+You can also re-run the `kubectl get endpoints kuard`{{execute}} command
 where you'll see an endpoint associated with your running pod now.
