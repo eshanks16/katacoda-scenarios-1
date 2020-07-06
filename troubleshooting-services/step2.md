@@ -19,7 +19,7 @@ First they deploy a container that contains the curl application into the
 
 `kubectl run curl --generator=run-pod/v1 --image=radial/busyboxplus:curl -n prodapps -i --tty`{{execute}}
 
-Once the pod has started, you will have an shell from within this curl
+Once the pod has started, you will have a shell from within this curl
 container to run tests.
 
 Once you've gotten a terminal session, run the curl command to test connectivity
@@ -54,7 +54,7 @@ namespaces must include a DNS suffix for the service entry:
 
 [Service Name].[Namespace Name].[svc.cluster.local]
 
-Exit the container shell again by typing `exit` and hitting enter.
+Exit the container shell again by typing exit and hitting enter.
 
 `exit`
 
