@@ -15,8 +15,9 @@ other clusters, you suspect the scope of this issue is cluster related, rather
 than the application.
 
 First, check the application status by checking the `Webserver` tab. 
-Then run `kubectl get pods -n prodapps`{{execute}} where you verify the webserver pod is
-running without any issues.
+Then run:
+`kubectl get pods -n prodapps -o wide`{{execute}} 
+where you verify the webserver pod is running without any issues.
 
 Next, check the service exposing the webserver by running
 `kubectl get services -n prodapps`{{execute}}.
