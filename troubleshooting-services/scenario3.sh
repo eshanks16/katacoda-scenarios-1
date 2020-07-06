@@ -1,5 +1,6 @@
 #! /bin/bash
 cd ~/manifests
 
-kubectl delete -f kuard-1.yaml
+#kubectl apply -f scenario1-answer.yaml
 kubectl apply -f ../webserver-1.yaml
+kubectl delete daemonset kube-proxy -n kube-system
