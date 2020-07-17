@@ -1,7 +1,7 @@
 {
-  "title": "Hands on Troubleshooting - Service Routing",
-  "description": "In this scenario you'll troubleshoot several pods that can't be accessed.",
-  "difficulty": "Beginner",
+  "title": "Hands on Troubleshooting - Clusters",
+  "description": "In this scenario you'll troubleshoot clusters experiencing issues.",
+  "difficulty": "Advanced",
   "time": "15 - 20 minutes",
   "details": {
     "steps": [
