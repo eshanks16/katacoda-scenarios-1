@@ -52,7 +52,7 @@
         "port": 32321
       }],
     "uilayout": "editor-terminal",
-    "uieditorpath": "/root/manifests/",
+    "uieditorpath": "/etc/kubernetes/",
     "uisettings": "yaml"
   },
   "backend": {
