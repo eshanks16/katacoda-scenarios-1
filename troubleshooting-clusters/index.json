@@ -11,7 +11,7 @@
         "courseData": "launch.sh"
       },
       {
-        "title": "Failed Services Scenario 1",
+        "title": "Failed Cluster Scenario 1",
         "text": "step1.md",
         "courseData": "scenario1.sh",
         "code": "reset.sh"

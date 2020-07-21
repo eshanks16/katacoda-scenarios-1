@@ -8,7 +8,7 @@ inconvenience and commit to solving this issue immediately so that the build
 processes can return to a normal state.
 
 You start by checking to see if the Kubernetes nodes are healthy.
-`kubectl get nodes`{{execute}}
+`kubectl get nodes --request-timeout 5s`{{execute}}
 
 After some time you receive an error message. Either a timeout or a connection refused.
 
@@ -29,7 +29,7 @@ one is the problem though? You start with the brains of the Kubernetes
 machine. Check the docker logs for the API server container.
 
 Identify the container ID of the Kube-API server by copying it from the 
-`docker ps-a`{{execute}} command from above.
+`docker ps -a`{{execute}} command from above.
 
 Then run 
 
@@ -45,18 +45,19 @@ which is also in an exited state.
 
 You run the command below to read the etcd logs.
 
-`docker logs $(docker ps -a --no-trunc | awk '/etcd --advertise*/ {print $1}')'`{{execute}}
+`docker logs $(docker ps -a --no-trunc | awk '/etcd --advertise*/ {print $1}')`{{execute}}
 
 The last log written by etcd looks to be the final clue you needed to solve the
 issue. 
 
-`open /etc/kubernetes/pki/etcd/wrongca.crt: no such file or directory`
+`/etc/kubernetes/pki/etcd/wrongca.crt: no such file or directory`
 
-It appears as though etcd can't find the CA certificate.
+It appears as though etcd can't find the CA certificate. In the editor, open the
+etcd.yaml file in the manifests directory. Update the CA certificate path to
+`/etc/kubernetes/pki/etcd/ca.crt`.
 
-In the editor, open the etcd.yaml file in the manifests directory. Update the
-CA certificate path to `/etc/kubernetes/pki/etcd/ca.crt`.
+Since the etcd container is a static pod, the Kubelet will start the container
+soon after the configuration is corrected. Once the etcd has started the
+Kubernetes API should come back up and the following command will work again.
 
-###
-docker ps -a --no-trunc | awk
-'/k8s_kube-apiserver_kube-apiserver-controlplane_kube-system*_1/ {print $1}'
+`kubectl get nodes`{{execute}}
