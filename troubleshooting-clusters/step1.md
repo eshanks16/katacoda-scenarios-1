@@ -1,57 +1,62 @@
-As a cloud support engineer, you receive a call from an employee who needs help
-with their new application. The user states that after deploying their
-containers, they are unable to access them through a web browser.
+You are a Cloud Engineer responsible for all aspects of Kubernetes at your
+company. Developers have adopted the Kubernetes platform for all of their new
+applications and have built pipelines to automate the deployment of their code.
 
-You've gotten access to their cluster and have committed to your co-worker to
-help them fix this issue.
+During a daily scrum you're told that the new development cluster recently
+released to this group is not working correctly. You apologize for the
+inconvenience and commit to solving this issue immediately so that the build
+processes can return to a normal state.
 
-First, lets get a look at whats happening within the cluster, specifically to
-make sure that their container is running.
+You start by checking to see if the Kubernetes nodes are healthy.
+`kubectl get nodes`{{execute}}
 
-`kubectl get pods`{{execute}}
+After some time you receive an error message. Either a timeout or a connection refused.
 
-Well, there is a pod in a running state which is a good sign. Now, lets look to
-see if there is a Kubernetes service associated with that application to publish
-it outside the cluster.
+Your first instinct, to check the nodes, has identified a new clue. You can't
+access the nodes. After a second, you realize that this means that the
+Kubernetes API is not responding to your commands so this is a larger issue than
+a single node not being healthy. You change focus to start identifying new clues
+related to the API server.
 
-`kubectl get services`{{execute}}
+Since the Kubernetes API is unavailable, kubectl commands won't work. You must
+rely on some commands from the container runtime instead, in this case it's
+Docker. Take a look at the containers on the cluster by running some docker commands.
 
-We can see that there are two services, within the default namespace, One of
-which is the Kubernetes ClusterIP which should be visible on all Kubernetes
-clusters. The second service looks to be what is used to connect the `kuard` pod.
+`docker ps -a`{{execute}}
 
-Lets see what happens when we try to access the application via a web browser.
-Click the Webserver tab to see the status of the application in a browser.
+You notice that some of your containers are exiting which is another clue. Which
+one is the problem though? You start with the brains of the Kubernetes
+machine. Check the docker logs for the API server container.
 
-Well, your co-worker was telling the truth, the application isn't available. You
-ask to run one more test to confirm your suspicions.
+Identify the container ID of the Kube-API server by copying it from the 
+`docker ps-a`{{execute}} command from above.
 
-`kubectl get endpoints kuard`{{execute}}
+Then run 
 
-This command returns no endpoints for the kuard pod. This means that the service
-that was deployed isn't associated with this pod. Its likely that it was
-misconfigured.
+`docker logs CONTAINERID_GOES_HERE`
 
-Lets take a look at the manifest used to deploy this application. Click the
-`kuard-1.yaml` file in the editor to see what was used for the deployment.
+We see a bunch of errors like:
 
-### AH HA!
+`Transport failed to connect to 127.0.0.1:2379`
 
-You notice in the manifest that the pod has a label of `app: kuard`. The
-service manifest found in the second half of the manifest is trying to select
-pods with a label of `application: kuard`. This may seem like a small thing, but these
-need to match for the service to be associated with the pods running in the
-cluster.
+That is the etcd port number. You believe the API server isn't able to read or
+write from etcd. Your focus changes to see whats wrong with the etcd container
+which is also in an exited state.
 
-Fix this by changing the service's selector so that they match.
->NOTE: If you are stuck, look at the `scenario1-answer.yaml` file.
+You run the command below to read the etcd logs.
 
-When you've made the changes re-apply the manifest by running:
+`docker logs $(docker ps -a --no-trunc | awk '/etcd --advertise*/ {print $1}')'`{{execute}}
 
-`kubectl apply -f kuard-1.yaml`{{execute}}
+The last log written by etcd looks to be the final clue you needed to solve the
+issue. 
 
-After the manifest has been re-applied, check the Webserver tab again to see
-your working application.
+`open /etc/kubernetes/pki/etcd/wrongca.crt: no such file or directory`
 
-You can also re-run the `kubectl get endpoints kuard`{{execute}} command
-where you'll see an endpoint associated with your running pod now.
+It appears as though etcd can't find the CA certificate.
+
+In the editor, open the etcd.yaml file in the manifests directory. Update the
+CA certificate path to `/etc/kubernetes/pki/etcd/ca.crt`.
+
+###
+docker ps -a --no-trunc | awk
+'/k8s_kube-apiserver_kube-apiserver-controlplane_kube-system*_1/ {print $1}'
