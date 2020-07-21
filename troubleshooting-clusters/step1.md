@@ -45,7 +45,7 @@ which is also in an exited state.
 
 You run the command below to read the etcd logs.
 
-`docker logs $(docker ps -a --no-trunc | awk '/etcd --advertise*/ {print $1}')`{{execute}}
+`docker logs $(docker ps -a | awk '/etcd --advertise*/ {print $1}')`{{execute}}
 
 The last log written by etcd looks to be the final clue you needed to solve the
 issue. 
@@ -57,7 +57,11 @@ etcd.yaml file in the manifests directory. Update the CA certificate path to
 `/etc/kubernetes/pki/etcd/ca.crt`.
 
 Since the etcd container is a static pod, the Kubelet will start the container
-soon after the configuration is corrected. Once the etcd has started the
-Kubernetes API should come back up and the following command will work again.
+soon after the configuration is corrected. Once the etcd container has started
+successfully the Kubernetes API should come back up and the following command
+will work again.
+
+>Note: This may take a moment. You can re-run the command below as needed until
+>the nodes show up.
 
 `kubectl get nodes`{{execute}}
