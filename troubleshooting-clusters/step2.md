@@ -41,6 +41,9 @@ that those containers were never stopped after the kubelet service was stopped.
 If you're right, the command below will start the API server container and
 shortly thereafter you'll be able to run `kubectl` commands again.
 
+Press `CTRL+C` in the terminal to quit the previous command and then start the
+kubelet.
+
 `systemctl start kubelet`{{execute}}
 
 After a moment or two you can run a sample kubectl command.
