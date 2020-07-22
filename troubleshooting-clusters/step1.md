@@ -43,12 +43,16 @@ That is the etcd port number. You believe the API server isn't able to read or
 write from etcd. Your focus changes to see whats wrong with the etcd container
 which is also in an exited state.
 
-You run the command below to read the etcd logs.
+Find the etcd container ID by running
 
-`docker logs $(docker ps -a | awk '/etcd --advertise*/ {print $1}')`{{execute}}
+`docker ps -a`{{execute}}
+
+Then look at the etcd container's logs
+
+`docker logs CONTAINERID_GOES_HERE`
 
 The last log written by etcd looks to be the final clue you needed to solve the
-issue. 
+issue.
 
 `/etc/kubernetes/pki/etcd/wrongca.crt: no such file or directory`
 

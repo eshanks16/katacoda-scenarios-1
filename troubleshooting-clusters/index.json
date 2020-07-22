@@ -15,6 +15,12 @@
         "text": "step1.md",
         "courseData": "scenario1.sh",
         "code": "reset.sh"
+      },
+      {
+        "title": "Failed Cluster Scenario 2",
+        "text": "step2.md",
+        "courseData": "scenario2.sh",
+        "code": "reset.sh"
       }
     ],
     "intro": {
