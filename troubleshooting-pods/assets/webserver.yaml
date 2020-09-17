@@ -46,7 +46,7 @@ spec:
         - mountPath: "/usr/share/nginx/html"
           name: task-pv-storage
   nodeSelector:
-    kubernetes.io/hostname: master
+    kubernetes.io/hostname: controlplane
   tolerations:
   - key: node-role.kubernetes.io/master
     operator: Exists

@@ -30,7 +30,7 @@ to make sure the kube-apiserver has a valid yaml file in the default location of
 kube-apiserver.yaml file that defines the container.
 
 Well, the yaml file looks fine to you, so why didn't the kubelet on the control
-plan node, start the container? Maybe the kubelet will have more information.
+plane node, start the container? Maybe the kubelet will have more information.
 
 `systemctl status kubelet`{{execute}}
 
